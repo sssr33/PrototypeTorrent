@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "Class1.h"
-#include "Helpers/VectorIBuffer.h"
+
+#include <libhelpers\VectorIBuffer.h>
 
 using namespace TorrentLib;
 using namespace Platform;
