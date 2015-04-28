@@ -44,7 +44,7 @@ namespace PrototypeTorrent
 
             using (var stream = await file.OpenReadAsync())
             {
-
+                await TorrentLib.Class1.ParseMetainfoFile(stream);
             }
         }
     }
