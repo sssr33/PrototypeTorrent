@@ -1,4 +1,9 @@
 #pragma once
+#include "BencodeObject.h"
+#include "BencodeDictionary.h"
+#include "BencodeList.h"
+#include "BencodeString.h"
+#include "BencodeInt.h"
 
 #include <libhelpers\coroutine3.h>
 
@@ -6,18 +11,6 @@
 #include <string>
 #include <list>
 #include <map>
-
-struct BencodeField{
-	bool integer;
-	bool string;
-	bool list;
-	bool dictionary;
-
-	int intVal;
-	std::string strVal;
-	std::list<BencodeField> listVal;
-	std::map<std::string, BencodeField> dictVal;
-};
 
 struct ParseState{
 	const uint8_t *data;
@@ -30,15 +23,23 @@ public:
 	BencodeDocument();
 	~BencodeDocument();
 
+	size_t GetLength() const;
+
+	const BencodeObject *GetRoot() const;
+	BencodeObject *GetRoot();
+
+	std::reference_wrapper<std::list<std::unique_ptr<BencodeObject>>> GetRootListReference();
+
 	bool Parse(const void *data, size_t size);
 private:
 	coroutine3 coParse;
 
-	std::list<BencodeField> rootFields;
+	size_t length;
+	std::list<std::unique_ptr<BencodeObject>> root;
 
-	bool ParseField(coroutine3 &co, ParseState &parseState, BencodeField *res);
-	bool ParseInteger(coroutine3 &co, ParseState &parseState, BencodeField *res);
-	bool ParseString(coroutine3 &co, ParseState &parseState, BencodeField *res);
-	bool ParseDictionary(coroutine3 &co, ParseState &parseState, BencodeField *res);
-	bool ParseList(coroutine3 &co, ParseState &parseState, BencodeField *res);
+	bool ParseField(coroutine3 &co, ParseState &parseState, std::unique_ptr<BencodeObject> *res);
+	bool ParseInteger(coroutine3 &co, ParseState &parseState, std::unique_ptr<BencodeObject> *res);
+	bool ParseString(coroutine3 &co, ParseState &parseState, std::unique_ptr<BencodeObject> *res);
+	bool ParseDictionary(coroutine3 &co, ParseState &parseState, std::unique_ptr<BencodeObject> *res);
+	bool ParseList(coroutine3 &co, ParseState &parseState, std::unique_ptr<BencodeObject> *res);
 };

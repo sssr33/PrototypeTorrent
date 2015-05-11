@@ -4,6 +4,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Class1.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeDocument.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeType.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeDictionary.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeList.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeString.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeInt.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Session\MetainfoFile.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpProtocol.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Session\PeerId.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Class1.cpp" />
@@ -11,5 +20,13 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeDocument.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeDictionary.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeList.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeString.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeInt.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Session\MetainfoFile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpProtocol.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Session\PeerId.cpp" />
   </ItemGroup>
 </Project>
