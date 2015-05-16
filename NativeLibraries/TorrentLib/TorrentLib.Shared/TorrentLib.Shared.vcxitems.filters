@@ -11,8 +11,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeString.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeInt.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Session\MetainfoFile.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpProtocol.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Session\PeerId.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerRequestParameters.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Session\Sha1Hash.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpRequest.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Class1.cpp" />
@@ -26,7 +28,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeString.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeInt.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Session\MetainfoFile.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpProtocol.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Session\PeerId.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerRequestParameters.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpRequest.cpp" />
   </ItemGroup>
 </Project>

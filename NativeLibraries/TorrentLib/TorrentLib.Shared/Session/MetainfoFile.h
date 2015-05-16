@@ -1,13 +1,11 @@
 #pragma once
+#include "Sha1Hash.h"
 #include "Bencode/BencodeDocument.h"
 
-#include <array>
 #include <cstdint>
 #include <string>
 #include <vector>
 #include <cstdlib>
-
-typedef std::array<uint8_t, 20> Sha1Hash;
 
 struct FileInfo{
 	std::string FilePath;

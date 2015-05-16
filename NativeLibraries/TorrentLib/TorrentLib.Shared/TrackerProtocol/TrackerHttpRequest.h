@@ -1,10 +1,10 @@
 #pragma once
 #include "Bencode/BencodeDocument.h"
 
-class TrackerHttpProtocol{
+class TrackerHttpRequest{
 public:
-	TrackerHttpProtocol();
-	~TrackerHttpProtocol();
+	TrackerHttpRequest();
+	~TrackerHttpRequest();
 
 	void Send(const BencodeDocument *doc);
 };
