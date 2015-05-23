@@ -41,6 +41,24 @@ MetainfoFile::MetainfoFile(const BencodeDocument &doc, const void *infoHashData,
 MetainfoFile::~MetainfoFile(){
 }
 
+const std::vector<std::string> &MetainfoFile::GetTrackers() const{
+	return this->trackerUrl;
+}
+
+const Sha1Hash &MetainfoFile::GetInfoHash() const{
+	return this->infoHash;
+}
+
+uint64_t MetainfoFile::GetTotalSize() const{
+	uint64_t size = 0;
+
+	for (auto &i : this->fileInfo){
+		size += i.FileSize;
+	}
+
+	return size;
+}
+
 void MetainfoFile::ParseTrackerUrl(const std::map<std::string, std::unique_ptr<BencodeObject>> &rootDict){
 	auto announceTmp = rootDict.find("announce");
 	auto announceListTmp = rootDict.find("announce-list");

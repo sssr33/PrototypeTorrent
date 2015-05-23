@@ -16,6 +16,10 @@ class MetainfoFile{
 public:
 	MetainfoFile(const BencodeDocument &doc, const void *infoHashData, size_t infoHashSize);
 	~MetainfoFile();
+
+	const std::vector<std::string> &GetTrackers() const;
+	const Sha1Hash &GetInfoHash() const;
+	uint64_t GetTotalSize() const;
 private:
 	Sha1Hash infoHash;
 	std::vector<std::string> trackerUrl;

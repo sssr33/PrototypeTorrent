@@ -2,6 +2,7 @@
 #include "Class1.h"
 #include "Bencode\BencodeDocument.h"
 #include "Session\MetainfoFile.h"
+#include "TrackerProtocol\TrackerHttpRequest.h"
 
 #include <memory>
 #include <libhelpers\H.h>
@@ -112,6 +113,31 @@ Windows::Foundation::IAsyncAction ^Class1::ParseMetainfoFile(Windows::Storage::S
 		bufferByteAccess->Buffer(&hashBytes);
 
 		std::unique_ptr<MetainfoFile> metainfoFile = std::unique_ptr<MetainfoFile>(new MetainfoFile(doc, hashBytes, hashSize));
+
+		auto &infoHash = metainfoFile->GetInfoHash();
+		auto &trackers = metainfoFile->GetTrackers();
+		PeerId peerId(true);
+
+		for (auto &i : trackers){
+			if (i.find("http:") == 0){
+				TrackerHttpRequest request;
+				TrackerRequestParameters requestParams;
+				auto url = H::Text::ConvertUTF8ToWString(i);
+
+				requestParams.SetCompactResponse(true);
+				requestParams.SetDownloaded(0);
+				requestParams.SetUploaded(0);
+				requestParams.SetLeft(metainfoFile->GetTotalSize());
+				requestParams.SetPort(6881);
+				requestParams.SetRequestEvent(TrackerRequestEvent::Started);
+				requestParams.SetInfoHash(infoHash);
+				requestParams.SetPeerId(peerId);
+
+				request.Send(url, requestParams);
+				auto response = request.Receive();
+				int stop = 342;
+			}
+		}
 
 		int stop = 432;
 	});

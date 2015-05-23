@@ -22,12 +22,17 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeDocument.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Bencode\BencodeType.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Class1.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\CompactPeerData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Session\PeerAddress.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\HttpRequest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Session\PeerId.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Session\MetainfoFile.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)pch.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Session\Sha1Hash.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpRequest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerRequestParameters.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerResponse.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerResponsePeerData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeInt.cpp" />
@@ -37,6 +42,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Bencode\BencodeDocument.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Class1.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\CompactPeerData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Session\PeerAddress.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\HttpRequest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Session\PeerId.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Session\MetainfoFile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)pch.cpp">
@@ -44,6 +52,8 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerHttpRequest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerRequestParameters.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerResponse.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerResponsePeerData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />

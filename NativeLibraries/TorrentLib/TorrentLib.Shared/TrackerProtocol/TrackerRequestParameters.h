@@ -22,8 +22,8 @@ public:
 	const PeerId &GetPeerId() const;
 	void SetPeerId(const PeerId &v);
 
-	const std::string &GetOptionalIp() const;
-	void SetOptionalIp(const std::string &v);
+	const std::wstring &GetOptionalIp() const;
+	void SetOptionalIp(const std::wstring &v);
 
 	uint16_t GetPort() const;
 	void SetPort(uint16_t v);
@@ -45,7 +45,7 @@ public:
 private:
 	Sha1Hash infoHash;
 	PeerId peerId;
-	std::string optionalIp;
+	std::wstring optionalIp;
 	uint16_t port;
 	uint64_t uploaded;
 	uint64_t downloaded;

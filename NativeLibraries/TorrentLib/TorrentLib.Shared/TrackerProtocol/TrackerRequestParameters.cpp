@@ -22,11 +22,11 @@ void TrackerRequestParameters::SetPeerId(const PeerId &v){
 	this->peerId = v;
 }
 
-const std::string &TrackerRequestParameters::GetOptionalIp() const{
+const std::wstring &TrackerRequestParameters::GetOptionalIp() const{
 	return this->optionalIp;
 }
 
-void TrackerRequestParameters::SetOptionalIp(const std::string &v){
+void TrackerRequestParameters::SetOptionalIp(const std::wstring &v){
 	this->optionalIp = v;
 }
 
