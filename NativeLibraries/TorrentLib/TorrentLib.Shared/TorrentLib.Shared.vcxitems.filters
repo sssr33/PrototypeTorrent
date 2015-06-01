@@ -20,6 +20,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Session\PeerAddress.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerResponsePeerData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TrackerProtocol\CompactPeerData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Session\BitfieldTree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Class1.cpp" />
@@ -41,5 +42,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Session\PeerAddress.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\TrackerResponsePeerData.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TrackerProtocol\CompactPeerData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Session\BitfieldTree.cpp" />
   </ItemGroup>
 </Project>

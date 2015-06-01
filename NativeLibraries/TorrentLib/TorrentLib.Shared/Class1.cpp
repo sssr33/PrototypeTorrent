@@ -3,6 +3,7 @@
 #include "Bencode\BencodeDocument.h"
 #include "Session\MetainfoFile.h"
 #include "TrackerProtocol\TrackerHttpRequest.h"
+#include "Session\BitfieldTree.h"
 
 #include <memory>
 #include <libhelpers\H.h>
@@ -18,6 +19,17 @@ Class1::Class1()
 
 Windows::Foundation::IAsyncAction ^Class1::ParseMetainfoFile(Windows::Storage::Streams::IRandomAccessStream ^stream){
 	return concurrency::create_async([=](){
+
+		std::vector<uint32_t> elc;
+		uint32_t level0Cnt = 117;
+		auto treeSize = BitfieldTree::CountBitTreeElements(level0Cnt);
+		auto levelCount = BitfieldTree::LevelCount(treeSize);
+		auto k = BitfieldTree::GetK(level0Cnt);
+
+		for (uint32_t i = 0; i < levelCount; i++){
+			elc.push_back(BitfieldTree::ElementCount(treeSize, k, i));
+		}
+
 		BencodeDictionary *infoDict = nullptr;
 		BencodeDocument doc;
 		Microsoft::WRL::ComPtr<VectorIBuffer> readBuffer, parseBuffer;
