@@ -20,14 +20,26 @@ Class1::Class1()
 Windows::Foundation::IAsyncAction ^Class1::ParseMetainfoFile(Windows::Storage::Streams::IRandomAccessStream ^stream){
 	return concurrency::create_async([=](){
 
-		std::vector<uint32_t> elc;
-		uint32_t level0Cnt = 117;
-		auto treeSize = BitfieldTree::CountBitTreeElements(level0Cnt);
+		std::vector<uint32_t> elc, elc2;
+		uint32_t level0Cnt = 50000;
+		uint32_t tmpECount = level0Cnt;
+		BitfieldTree btree(level0Cnt);
+		/*auto treeSize = BitfieldTree::CountBitTreeElements(level0Cnt);
 		auto levelCount = BitfieldTree::LevelCount(treeSize);
-		auto k = BitfieldTree::GetK(level0Cnt);
+		auto k = BitfieldTree::GetK(level0Cnt);*/
+
+		auto levelCount = btree.LevelCount();
 
 		for (uint32_t i = 0; i < levelCount; i++){
-			elc.push_back(BitfieldTree::ElementCount(treeSize, k, i));
+			/*elc.push_back(BitfieldTree::ElementCount(treeSize, k, i));*/
+
+			auto c1 = btree.ElementCount(i);
+			auto c2 = tmpECount;
+
+			elc.push_back(c1);
+			elc2.push_back(c2);
+
+			tmpECount = tmpECount / 2 + !!(tmpECount % 2);
 		}
 
 		BencodeDictionary *infoDict = nullptr;

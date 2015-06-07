@@ -17,17 +17,34 @@ real_node_count += elements;
 which helps reduce iterations, to reduce more you need to increase k16 size from 16 to 32
 fill it with valid coefs and accordingly reduce k = k16[(tmpElements & 0xFFFFFFFF) >> 28] iterations
 */
-const uint32_t BitfieldTree::k16[16] = {
+const int32_t BitfieldTree::k16[16] = {
 	0, 1, 1, 2,
 	1, 2, 2, 3,
 	1, 2, 2, 3,
 	2, 3, 3, 4
 };
 
-BitfieldTree::BitfieldTree(){
+BitfieldTree::BitfieldTree(uint32_t level0Count)
+	: k(BitfieldTree::GetK(level0Count))
+{
+	uint32_t bitSize = 2 * level0Count + this->k;
+	uint32_t byteSize = bitSize / 8 + !!(bitSize % 8);
+
+	this->data.resize(byteSize);
+	this->bits.set_data(data.data(), bitSize);
 }
 
 BitfieldTree::~BitfieldTree(){
+}
+
+uint32_t BitfieldTree::LevelCount() const{
+	uint32_t count = BitfieldTree::LevelCount(this->bits.size());
+	return count;
+}
+
+uint32_t BitfieldTree::ElementCount(uint32_t level) const{
+	uint32_t count = BitfieldTree::ElementCount(this->bits.size(), this->k, level);
+	return count;
 }
 
 uint32_t BitfieldTree::RoundPOT(uint32_t v){
@@ -51,10 +68,14 @@ uint32_t BitfieldTree::Msb32(uint32_t v){
 	return(v & ~(v >> 1));
 }
 
-int32_t BitfieldTree::GetK(uint32_t levelCount){
-	int32_t k, tmpElements;
+int32_t BitfieldTree::GetK(uint32_t level0Count){
+	if (level0Count <= 0){
+		return 0;
+	}
 
-	tmpElements = RoundPOT(levelCount) - levelCount;
+	int32_t k;
+	int32_t tmpElements = static_cast<int32_t>(RoundPOT(level0Count) - level0Count);
+
 	k = k16[(tmpElements & 0xFFFFFFFF) >> 28];
 	k += k16[(tmpElements & 0x0FFFFFFF) >> 24];
 	k += k16[(tmpElements & 0x00FFFFFF) >> 20];
@@ -91,6 +112,7 @@ uint32_t BitfieldTree::LevelCount(uint32_t treeElementCount){
 	uint32_t count = 0;
 	auto tmp = RoundPOT(treeElementCount);
 
+	// TODO check for 1 and 0
 	while (tmp = tmp >> 1){
 		count++;
 	}
